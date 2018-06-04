@@ -1,0 +1,3 @@
+[submodule "laradock-sandbox"]
+	path = laradock-sandbox
+	url = git@github.com:kitkat729/laradock.git
