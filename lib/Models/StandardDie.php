@@ -5,10 +5,9 @@ namespace DeliveryDotCom\Models;
 use Exception;
 use DeliveryDotCom\Contracts\DiceInterface;
 
-class AnyDie implements DiceInterface
+class StandardDie implements DiceInterface
 {
-
-  public function __construct(array $faces)
+  public function __construct($faces = 0)
   {
     $this->faces = $faces;
   }
@@ -17,9 +16,9 @@ class AnyDie implements DiceInterface
   {
     $val = 0;
 
-    if (($count = count($this->faces)) > 0)
+    if ($this->faces > 0)
     {
-      $val = $this->faces[rand(0, $count-1)];
+      $val = rand(1, $this->faces);
     }
 
     return $val;
@@ -29,10 +28,8 @@ class AnyDie implements DiceInterface
   {
     switch($name) {
       case 'faces':
-        foreach($value as $item) {
-          if (!is_numeric($item)) {
-            throw new Exception('Invalid array argument');
-          }
+        if (!is_numeric($value)) {
+          throw new Exception('Invalid argument');
         }
         $this->{$name} = $value;
         break;
