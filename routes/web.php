@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/order-payments', 'OrderPaymentsController@index');
+
+Route::get('/dice-rolling', 'DiceRollingController@index');
