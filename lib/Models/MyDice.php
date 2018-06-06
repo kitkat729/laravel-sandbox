@@ -7,11 +7,11 @@ use DeliveryDotCom\Contracts\DiceInterface;
 
 class MyDice implements DiceContainerInterface
 {
-  private $collection = [];
+  protected $items = [];
 
   public function attach(DiceInterface $die)
   {
-    $this->collection[] = $die;
+    $this->items[] = $die;
 
     return $this;
   }
@@ -20,7 +20,7 @@ class MyDice implements DiceContainerInterface
   {
     $total = 0;
 
-    foreach ($this->collection as $item)
+    foreach ($this->items as $item)
     {
       $total += $item->roll();
     }
