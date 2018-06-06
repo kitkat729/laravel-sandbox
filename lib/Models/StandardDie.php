@@ -2,16 +2,29 @@
 
 namespace DeliveryDotCom\Models;
 
-use Exception;
+use InvalidArgumentException;
 use DeliveryDotCom\Contracts\DiceInterface;
 
 class StandardDie implements DiceInterface
 {
+  /**
+   * Create a new StandardDie instance.
+   *
+   * @param int $faces
+   * @return void
+   *
+   * @throws \InvalidArgumentException
+   */
   public function __construct($faces = 0)
   {
     $this->faces = $faces;
   }
 
+  /**
+   * Generate a random number from the set face values associated with the die
+   *
+   * @return int
+   */ 
   public function roll()
   {
     $val = 0;
@@ -28,8 +41,8 @@ class StandardDie implements DiceInterface
   {
     switch($name) {
       case 'faces':
-        if (!is_numeric($value)) {
-          throw new Exception('Invalid argument');
+        if (!is_numeric($value) || (is_numeric($value) && $value < 0)) {
+          throw new InvalidArgumentException('Argument must be a positive numeric value');
         }
         $this->{$name} = $value;
         break;
