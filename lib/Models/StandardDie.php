@@ -7,11 +7,24 @@ use DeliveryDotCom\Contracts\DiceInterface;
 
 class StandardDie implements DiceInterface
 {
+  /**
+   * Create a new StandardDie instance.
+   *
+   * @param int $faces
+   * @return void
+   *
+   * @throws \InvalidArgumentException
+   */
   public function __construct($faces = 0)
   {
     $this->faces = $faces;
   }
 
+  /**
+   * Generate a random number from the set face values associated with the die
+   *
+   * @return int
+   */ 
   public function roll()
   {
     $val = 0;

@@ -7,12 +7,24 @@ use DeliveryDotCom\Contracts\DiceInterface;
 
 class AnyDie implements DiceInterface
 {
-
+  /**
+   * Create a new AnyDie instance.
+   *
+   * @param array $faces
+   * @return void
+   *
+   * @throws \InvalidArgumentException
+   */
   public function __construct(array $faces)
   {
     $this->faces = $faces;
   }
 
+  /**
+   * Generate a random number from the set face values associated with the die
+   *
+   * @return int
+   */
   public function roll()
   {
     $val = 0;
