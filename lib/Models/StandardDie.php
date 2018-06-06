@@ -2,7 +2,6 @@
 
 namespace DeliveryDotCom\Models;
 
-use InvalidArgumentException;
 use DeliveryDotCom\Contracts\DiceInterface;
 
 class StandardDie implements DiceInterface
@@ -42,7 +41,7 @@ class StandardDie implements DiceInterface
     switch($name) {
       case 'faces':
         if (!is_numeric($value) || (is_numeric($value) && $value < 0)) {
-          throw new InvalidArgumentException('Argument must be a positive numeric value');
+          throw new \InvalidArgumentException('Argument must be a positive numeric value');
         }
         $this->{$name} = $value;
         break;
