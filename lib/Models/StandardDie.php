@@ -28,8 +28,8 @@ class StandardDie implements DiceInterface
   {
     switch($name) {
       case 'faces':
-        if (!is_numeric($value)) {
-          throw new InvalidArgumentException('Argument must be a numeric value');
+        if (!is_numeric($value) || (is_numeric($value) && $value < 0)) {
+          throw new InvalidArgumentException('Argument must be a positive numeric value');
         }
         $this->{$name} = $value;
         break;

@@ -29,10 +29,16 @@ class DieFactoryTest extends TestCase
       $this->assertInternalType("int", $num);
     }
 
-    public function testStandardDieInvalidArgument()
+    public function testStandardDieNonNumeric()
     {
       $this->expectException(InvalidArgumentException::class);
       $die = DieFactory::create('A');
+    }
+
+    public function testStandardDieNonPositive()
+    {
+      $this->expectException(InvalidArgumentException::class);
+      $die = DieFactory::create(-1);
     }
 
     /**
@@ -53,10 +59,15 @@ class DieFactoryTest extends TestCase
       $this->assertInternalType("int", $num);
     }
 
-    public function testAnyDieInvalidArgument()
+    public function testAnyDieNonNumeric()
     {
       $this->expectException(InvalidArgumentException::class);
       $die = DieFactory::create([0, 0, 'A', 1, 2, 9]);
     }
 
+    public function testAnyDieNonPositive()
+    {
+      $this->expectException(InvalidArgumentException::class);
+      $die = DieFactory::create([0, 0, -7, 1, 2, 9]);
+    }
 }

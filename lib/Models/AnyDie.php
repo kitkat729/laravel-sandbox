@@ -30,8 +30,8 @@ class AnyDie implements DiceInterface
     switch($name) {
       case 'faces':
         foreach($value as $item) {
-          if (!is_numeric($item)) {
-            throw new InvalidArgumentException('Array argument must contain only numeric values');
+          if (!is_numeric($item) || (is_numeric($item) && $item < 0)) {
+            throw new InvalidArgumentException('Array argument must contain only positive numeric values');
           }
         }
         $this->{$name} = $value;
