@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 
-use Exception;
+use InvalidArgumentException;
 use DeliveryDotCom\Models\DieFactory;
 use DeliveryDotCom\Models\StandardDie;
 use DeliveryDotCom\Models\AnyDie;
@@ -31,7 +31,7 @@ class DieFactoryTest extends TestCase
 
     public function testStandardDieInvalidArgument()
     {
-      $this->expectException(Exception::class);
+      $this->expectException(InvalidArgumentException::class);
       $die = DieFactory::create('A');
     }
 
@@ -55,7 +55,7 @@ class DieFactoryTest extends TestCase
 
     public function testAnyDieInvalidArgument()
     {
-      $this->expectException(Exception::class);
+      $this->expectException(InvalidArgumentException::class);
       $die = DieFactory::create([0, 0, 'A', 1, 2, 9]);
     }
 

@@ -2,7 +2,7 @@
 
 namespace DeliveryDotCom\Models;
 
-use Exception;
+use InvalidArgumentException;
 use DeliveryDotCom\Contracts\DiceInterface;
 
 class AnyDie implements DiceInterface
@@ -31,7 +31,7 @@ class AnyDie implements DiceInterface
       case 'faces':
         foreach($value as $item) {
           if (!is_numeric($item)) {
-            throw new Exception('Invalid array argument');
+            throw new InvalidArgumentException('Array argument must contain only numeric values');
           }
         }
         $this->{$name} = $value;
