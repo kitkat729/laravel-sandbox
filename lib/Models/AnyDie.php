@@ -2,17 +2,29 @@
 
 namespace DeliveryDotCom\Models;
 
-use Exception;
+use InvalidArgumentException;
 use DeliveryDotCom\Contracts\DiceInterface;
 
 class AnyDie implements DiceInterface
 {
-
+  /**
+   * Create a new AnyDie instance.
+   *
+   * @param array $faces
+   * @return void
+   *
+   * @throws \InvalidArgumentException
+   */
   public function __construct(array $faces)
   {
     $this->faces = $faces;
   }
 
+  /**
+   * Generate a random number from the set face values associated with the die
+   *
+   * @return int
+   */
   public function roll()
   {
     $val = 0;
@@ -30,8 +42,8 @@ class AnyDie implements DiceInterface
     switch($name) {
       case 'faces':
         foreach($value as $item) {
-          if (!is_numeric($item)) {
-            throw new Exception('Invalid array argument');
+          if (!is_numeric($item) || (is_numeric($item) && $item < 0)) {
+            throw new InvalidArgumentException('Array argument must contain only positive numeric values');
           }
         }
         $this->{$name} = $value;
