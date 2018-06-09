@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/order-payments', 'OrderPaymentsController@index');
 
 Route::get('/dice-rolling', 'DiceRollingController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
