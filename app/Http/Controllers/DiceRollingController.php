@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DeliveryDotCom\Models\MyDice;
+use DeliveryDotCom\Contracts\DiceContainerInterface;
 use DeliveryDotCom\Models\DieFactory;
 
 class DiceRollingController extends Controller
 {
   protected $container;
 
-  public function __construct(MyDice $container = null)
+  public function __construct(DiceContainerInterface $container)
   {
-    $this->container = $container ?: new MyDice;
+    $this->container = $container;
   }
 
   public function index()
