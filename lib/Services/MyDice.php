@@ -2,10 +2,10 @@
 
 namespace DeliveryDotCom\Services;
 
-use DeliveryDotCom\Contracts\DiceContainerInterface;
-use DeliveryDotCom\Contracts\DiceInterface;
+use DeliveryDotCom\Contracts\Dice\Container as ContainerInterface;
+use DeliveryDotCom\Contracts\Dice\Dice as DiceInterface;
 
-class MyDice implements DiceContainerInterface
+class MyDice implements ContainerInterface
 {
   /**
    * Dice in the container

@@ -14,10 +14,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $this->app->bind(
-            'DeliveryDotCom\Contracts\DiceContainerInterface',
-            'DeliveryDotCom\Services\MyDice'
-        );
     }
 
     /**
@@ -28,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->bind('MyDice', \DeliveryDotCom\Services\MyDice::class);
     }
 }
