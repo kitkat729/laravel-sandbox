@@ -3,26 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DeliveryDotCom\Contracts\DiceContainerInterface;
-use DeliveryDotCom\Models\DieFactory;
+//use DeliveryDotCom\Models\DieFactory;
 
 class DiceRollingController extends Controller
 {
-  protected $container;
+  //protected $container;
 
-  public function __construct(DiceContainerInterface $container)
+  public function __construct()
   {
-    $this->container = $container;
+    //$this->container = $container;
   }
 
   public function index()
   {
-    $this->container->attach(DieFactory::create(10)); // 10-sided die
-    $this->container->attach(DieFactory::create(8)); // 8-sided die
-    $this->container->attach(DieFactory::create(6)); // 6-sided die
-    $this->container->attach(DieFactory::create(4)); // 4-sided die
-    $this->container->attach(DieFactory::create([0, 0, 1, 2, 3, 3])); // A die with arbitrary faces
-    $total = $this->container->getTotal();
+    $dice = app()->make('MyDice');
+    $dice->attach(app('DiceManager')::create(10)); // 10-sided die
+    $dice->attach(app('DiceManager')::create(8)); // 8-sided die
+    $dice->attach(app('DiceManager')::create(6)); // 6-sided die
+    $dice->attach(app('DiceManager')::create(4)); // 4-sided die
+    $dice->attach(app('DiceManager')::create([0, 0, 1, 2, 3, 3])); // A die with arbitrary faces
+    $total = $dice->getTotal();
 
     echo "Total of all dice: $total\n";
   }

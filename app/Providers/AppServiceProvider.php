@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind('MyDice', \DeliveryDotCom\Services\MyDice::class);
+        $this->app->singleton('DiceManager', \DeliveryDotCom\Dice\DiceManager::class);
     }
 }

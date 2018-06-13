@@ -2,9 +2,9 @@
 
 namespace DeliveryDotCom\Models;
 
-use DeliveryDotCom\Contracts\DiceInterface;
+use DeliveryDotCom\Contracts\Dice\Dice;
 
-class StandardDie implements DiceInterface
+class StandardDie implements Dice
 {
   /**
    * Create a new StandardDie instance.

@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use DeliveryDotCom\Models\DieFactory;
 use DeliveryDotCom\Services\MyDice;
+//use DeliveryDotCom\Models\DieFactory;
 
 class DiceRollingTest extends TestCase
 {
@@ -28,6 +28,15 @@ class DiceRollingTest extends TestCase
   public function testEmptyDice() {
     $dice = app()->make('MyDice');
     $this->assertEquals($dice->getTotal(), 0);
+  }
+
+  public function testNonEmptyDice() {
+    $dice = app()->make('MyDice');
+    $DiceManager = resolve('DeliveryDotCom\Dice\DiceManager');
+    $dice->attach($DiceManager::create(1));
+    $dice->attach($DiceManager::create(1));
+    $dice->attach($DiceManager::create([9, 9, 9, 9, 9]));
+    $this->assertEquals($dice->getTotal(), 11);
   }
 
   /**

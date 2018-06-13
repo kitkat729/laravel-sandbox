@@ -2,9 +2,9 @@
 
 namespace DeliveryDotCom\Models;
 
-use DeliveryDotCom\Contracts\DiceInterface;
+use DeliveryDotCom\Contracts\Dice\Dice;
 
-class AnyDie implements DiceInterface
+class AnyDie implements Dice
 {
   /**
    * Create a new AnyDie instance.
