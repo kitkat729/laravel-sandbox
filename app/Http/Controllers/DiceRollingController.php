@@ -6,13 +6,6 @@ use Illuminate\Http\Request;
 
 class DiceRollingController extends Controller
 {
-  //protected $container;
-
-  public function __construct()
-  {
-    //$this->container = $container;
-  }
-
   public function index()
   {
     $dice = app()->make('MyDice');
