@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use DeliveryDotCom\Models\DieFactory;
 
 class DiceRollingController extends Controller
 {
