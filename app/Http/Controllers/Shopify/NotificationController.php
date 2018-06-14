@@ -13,10 +13,7 @@ class NotificationController extends Controller
 
   public function post(Request $request)
   {
-    // shopify webhook headers
     $topic = $request->header('X-Shopify-Topic');
-    $sha = $request->header('X-Shopify-Hmac-Sha256');
-    $domain = $request->header('X-Shopify-Shop-Domain');
 
     switch ($topic) {
       case 'products/create':
@@ -54,9 +51,6 @@ class NotificationController extends Controller
             try
             {
               $response = $http_client->request('POST', $url, $data);
-
-              // get json object from response contents
-              //$json = json_decode($response->getBody()->getContents());
             }
             catch (RequestException $e)
             {
