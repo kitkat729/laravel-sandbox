@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use GuzzleHttp\Client as GuzzleHttpClient;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,5 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton('GuzzleHttpClient', function($app) {
+            return new GuzzleHttpClient;
+        });
     }
 }
